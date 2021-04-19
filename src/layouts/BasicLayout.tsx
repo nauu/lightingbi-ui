@@ -155,7 +155,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
         }}
         footerRender={() => {
           if (settings.footerRender || settings.footerRender === undefined) {
-            return defaultFooterDom;
+            return null && defaultFooterDom;
           }
 
           return null;

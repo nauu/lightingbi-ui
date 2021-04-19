@@ -49,4 +49,13 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
+
+  'menu.dataset': '数据集',
+  'menu.connectors': '连接器',
+  'menu.connectors.excel': 'Excel',
+  'menu.connectors.csv': 'Csv',
+  'menu.chart': '图库',
+  'menu.chart.editor': '图表编辑',
+  'menu.calculate': '测算',
+  'menu.calculate.editor': '测算编辑'
 };

@@ -1,0 +1,103 @@
+.editor {
+  width: 100%;
+  height: 100%;
+  &_left {
+    position: relative;
+    width: 220px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #e7e7e7;
+  }
+  &_middle {
+    left: 220px;
+    right: 208px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    &_dimension {
+      position: relative;
+      padding: 5px;
+    }
+    &_measure {
+      position: relative;
+      padding: 5px;
+    }
+    &_performance {
+      top: 100px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      border-top: 1px solid #e7e7e7;
+    }
+  }
+  &_right {
+    width: 208px;
+    height: 100%;
+    float: right;
+    border-left: 1px solid #e7e7e7;
+  }
+}
+
+.fieldList {
+  padding: 10px;
+  &_title {
+    font-weight: bold;
+    border-bottom: 1px solid #e7e7e7;
+  }
+  ul li {
+    line-height: 30px;
+    &:hover {
+      background-color: #c0c4cc;
+    }
+  }
+}
+
+.dimension {
+  border: 1px solid #e7e7e7;
+  height: 40px;
+  &_title {
+    border-right: 1px solid #e7e7e7;
+    width: 120px;
+    line-height: 40px;
+    text-align: center;
+    float: left;
+  }
+  &_wrap {
+    margin-left: 120px;
+    position: relative;
+    height: 100%;
+  }
+}
+
+.measure {
+  border: 1px solid #e7e7e7;
+  height: 40px;
+  &_title {
+    border-right: 1px solid #e7e7e7;
+    width: 120px;
+    line-height: 40px;
+    text-align: center;
+    float: left;
+  }
+  &_wrap {
+    margin-left: 120px;
+    height: 100%;
+    position: relative;
+  }
+}
+
+.wrap_list {
+  padding: 5px;
+  height: 100%;
+  &_item {
+    float: left;
+    padding: 0 5px;
+    border: 1px solid #e7e7e7;
+    margin-right: 10px;
+    text-align: center;
+    min-width: 100px;
+    line-height: 26px;
+  }
+}
