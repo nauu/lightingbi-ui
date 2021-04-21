@@ -9,7 +9,7 @@ const getChartListData: ChartDataType[] = [{
 }];
 
 export default {
-  'GET  /api/chart/list': ( req, res ) => {
-    res.send(getChartListData);
+  'POST  /api/chart/list': ( req, res ) => {
+    res.send({data:getChartListData});
   }
 }
