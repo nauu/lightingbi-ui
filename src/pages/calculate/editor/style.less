@@ -1,0 +1,39 @@
+.calculate {
+  position: relative;
+  height: 100%;
+
+  &_toolbar {
+    height: 50px;
+  }
+
+  &_exec {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    z-index: 100;
+    width: 50px !important;
+    height: 50px !important;
+    margin-left: -25px;
+    padding: 0 !important;
+    background-color: rgb(185, 191, 196);
+  }
+
+  &_content {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    width: 100%;
+
+    &_code {
+      height: 100%;
+    }
+
+    &_result {
+      height: 100%;
+    }
+
+    .CodeMirror {
+      height: 100%;
+    }
+  }
+}
