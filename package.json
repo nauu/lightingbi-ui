@@ -62,6 +62,8 @@
     "bizcharts-plugin-slider": "^2.1.1-beta.1",
     "classnames": "^2.2.6",
     "dva": "^2.4.0",
+    "echarts": "^5.1.0",
+    "echarts-for-react": "^3.0.1",
     "gg-editor": "^2.0.2",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",

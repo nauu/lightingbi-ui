@@ -9,6 +9,7 @@ import FieldItem from "./components/filedItem";
 import Dimension from './components/dimension';
 import Measure from './components/measure';
 import ChartFieldItem from './components/chartFieldItem';
+import Performance from "./components/performance";
 import './style.less';
 
 // export default () => {
@@ -23,6 +24,7 @@ interface ChartEditorState {
   source: string
   isDrop: boolean
   activeField: DatasetFieldType | null
+  chartType: string
 }
 interface Offset {
   top: number;
@@ -36,6 +38,7 @@ class ChartEditor extends Component<ChartEditorProps, ChartEditorState> {
     source: '',
     isDrop: false,
     activeField: null,
+    chartType: 'bar',
   }
 
   dimension: ChartFieldType[] = []
@@ -84,6 +87,7 @@ class ChartEditor extends Component<ChartEditorProps, ChartEditorState> {
       }
       console.log(this.dimension, this.measure)
       if (flag) {
+        this.setState({'chartType': this.state.chartType === 'bar'?'line':'bar'});
         dispatch({
           type: 'chartEditor/saveChartFields',
           payload: {
@@ -120,6 +124,7 @@ class ChartEditor extends Component<ChartEditorProps, ChartEditorState> {
     }
     console.log(this.dimension, this.measure)
     if (flag) {
+      this.setState({'chartType': this.state.chartType === 'bar'?'line':'bar'});
       dispatch({
         type: 'chartEditor/saveChartFields',
         payload: {
@@ -314,7 +319,7 @@ class ChartEditor extends Component<ChartEditorProps, ChartEditorState> {
             </div>
           </div>
           <div className="editor_middle_performance">
-            <div>Performance</div>
+            <Performance chartType={this.state.chartType}></Performance>
           </div>
         </div>
         <div className="editor_right">

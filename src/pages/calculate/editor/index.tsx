@@ -29,8 +29,8 @@ interface CalculateEditorState {
 
 class Calculate extends Component<CalculateEditorProps, CalculateEditorState> {
 
-  changeCode = () => {
-
+  changeCode = (code) => {
+    console.log(code)
   };
 
   changeResult = () => {
