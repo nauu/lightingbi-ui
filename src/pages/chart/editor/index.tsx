@@ -4,12 +4,13 @@ import { FormattedMessage, connect } from 'umi';
 import React, { Component } from "react";
 import { findDOMNode } from 'react-dom';
 import { ChartEditorData, DatasetFieldType, ChartFieldType } from './data.d';
-import FiledList from './components/filedList';
-import FieldItem from "./components/filedItem";
-import Dimension from './components/dimension';
-import Measure from './components/measure';
-import ChartFieldItem from './components/chartFieldItem';
-import Performance from "./components/performance";
+import FiledList from './components/FiledList';
+import FieldItem from "./components/FiledItem";
+import Dimension from './components/Dimension';
+import Measure from './components/Measure';
+import ChartFieldItem from './components/ChartFieldItem';
+import Performance from "./components/Performance";
+import PerformanceConfig from "./components/PerformanceConfig";
 import './style.less';
 
 // export default () => {
@@ -38,7 +39,7 @@ class ChartEditor extends Component<ChartEditorProps, ChartEditorState> {
     source: '',
     isDrop: false,
     activeField: null,
-    chartType: 'bar',
+    chartType: 'Bar',
   }
 
   dimension: ChartFieldType[] = []
@@ -87,7 +88,6 @@ class ChartEditor extends Component<ChartEditorProps, ChartEditorState> {
       }
       console.log(this.dimension, this.measure)
       if (flag) {
-        this.setState({'chartType': this.state.chartType === 'bar'?'line':'bar'});
         dispatch({
           type: 'chartEditor/saveChartFields',
           payload: {
@@ -124,7 +124,6 @@ class ChartEditor extends Component<ChartEditorProps, ChartEditorState> {
     }
     console.log(this.dimension, this.measure)
     if (flag) {
-      this.setState({'chartType': this.state.chartType === 'bar'?'line':'bar'});
       dispatch({
         type: 'chartEditor/saveChartFields',
         payload: {
@@ -238,10 +237,18 @@ class ChartEditor extends Component<ChartEditorProps, ChartEditorState> {
     return false;
   }
 
+  handleTypeChange = (type: string) => {
+    this.setState({'chartType': type});
+  }
+
   render() {
     const { chartEditor, loading } = this.props;
     const { fields, dimension, measure } = chartEditor;
     this.dimension = [...dimension];
+    const chartOption = {
+      dimension,
+      measure
+    };
     return (
       <React.Fragment>
         <div className="editor_left">
@@ -319,11 +326,15 @@ class ChartEditor extends Component<ChartEditorProps, ChartEditorState> {
             </div>
           </div>
           <div className="editor_middle_performance">
-            <Performance chartType={this.state.chartType}></Performance>
+            <Performance chartType={this.state.chartType} option={chartOption}></Performance>
           </div>
         </div>
         <div className="editor_right">
-          <div>PerformanceConfig</div>
+          <PerformanceConfig
+            chartType={this.state.chartType}
+            onChange={this.handleTypeChange}
+          >
+          </PerformanceConfig>
         </div>
       </React.Fragment>
     );

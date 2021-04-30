@@ -4,7 +4,7 @@ const getChartInfo: ChartEditorData = {
   fields: [],
   dimension: [],
   measure: [],
-  chartType: 'bar'
+  chartType: 'Bar'
 }
 
 const getDatasetFields: ChartFieldType[] = [

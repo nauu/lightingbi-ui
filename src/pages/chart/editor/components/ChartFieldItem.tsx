@@ -10,7 +10,7 @@ interface FiledItemProps {
   onDragEnd?: any | null
 }
 
-class filedItem extends Component<FiledItemProps>{
+class FiledItem extends Component<FiledItemProps>{
 
   handleDragStart = (e) => {
     e.dataTransfer.effectAllowed = 'move';
@@ -43,4 +43,4 @@ class filedItem extends Component<FiledItemProps>{
   }
 }
 
-export default filedItem;
+export default FiledItem;
