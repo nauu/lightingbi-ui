@@ -143,6 +143,9 @@ const Model: ModelType = {
       const data = payload.map((node: any) => {
         node.key = node.id;
         node.title = node.name;
+        if (node.isFold) {
+          node.selectable = false;
+        } 
         return node;
       });
       const treeData = treeUtils.toTree(data, 'id', 'pid', 'children');

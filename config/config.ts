@@ -74,14 +74,14 @@ export default defineConfig({
             {
               path: '/dataset',
               name: 'dataset',
-              component: './dataset',
-              icon: 'smile',
+              component: './dataset/list',
+              icon: 'database',
             },
             {
               path: '/connectors',
               name: 'connectors',
-              component: './connectors',
-              icon: 'smile',
+              component: './connectors/list',
+              icon: 'deployment-unit',
             },
             {
               path: '/connectors/upload',
@@ -107,7 +107,7 @@ export default defineConfig({
             {
               path: '/calculate',
               name: 'calculate',
-              icon: 'area-chart',
+              icon: 'calculator',
               component: './calculate/editor'
             },
           ],
