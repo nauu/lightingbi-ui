@@ -1,4 +1,4 @@
 export interface CalculateEditorData {
   code: string
-  result: string
+  result: any
 }

@@ -6,7 +6,7 @@ import { GridContent } from "@ant-design/pro-layout";
 import {Button, Col, Row} from "antd";
 import './style.less';
 
-import CodeMirror from 'react-codemirror';
+import {Controlled as CodeMirror} from 'react-codemirror2';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/addon/hint/show-hint.css';
@@ -17,7 +17,7 @@ import 'codemirror/theme/mdn-like.css';
 import { SettingOutlined, PlayCircleOutlined } from "@ant-design/icons/lib";
 
 interface CalculateEditorProps {
-  chartList: CalculateEditorData;
+  calculateEditor: CalculateEditorData;
   dispatch: Dispatch;
   loading: boolean;
   history: any
@@ -29,26 +29,50 @@ interface CalculateEditorState {
 
 class Calculate extends Component<CalculateEditorProps, CalculateEditorState> {
 
-  changeCode = (code) => {
-    console.log(code)
+  state: CalculateEditorState = {
+    code: '// Write your calculate',
+    result: ''
   };
 
-  changeResult = () => {
+  changeCode = (editor: any, data: any, value: any) => {
+    this.setState({
+      code: value
+    });
+  };
 
-  }
+  changeResult = (editor: any, data: any, value: any) => {
+    console.log('changeResult',value)
+  };
 
   handleEditorConfig = () => {
 
   };
 
   handleExec = () => {
-
+    const { dispatch } = this.props;
+    const codeArr = this.state.code.split(/\n/);
+    if(codeArr[0] && codeArr[0].startsWith('//')) {
+      codeArr.shift();
+    }
+    dispatch({
+      type: 'calculateEditor/execCalc',
+      payload: {
+        code: codeArr.join('').replace(/\s/g,'')
+      }
+    }).then((res: any) => {
+      this.setState({result: this.formatResult(res)});
+    }).catch(e => {
+      console.log('e',e)
+    })
   };
 
   formatResult = (data: object) => {
-    const jsonData = JSON.stringify(data);
-    const result = JSON.stringify(JSON.parse(jsonData),null,2);
-    return result;
+    if(data){
+      const jsonData = JSON.stringify(data);
+      const result = JSON.stringify(JSON.parse(jsonData),null,2);
+      return result;
+    }
+    return '';
   }
 
   render() {
@@ -71,6 +95,8 @@ class Calculate extends Component<CalculateEditorProps, CalculateEditorState> {
       foldGutter: true,
       gutters:["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
     };
+
+    console.log('this.state.result',this.state.result)
 
     return (
       <GridContent className='calculate'>
@@ -97,17 +123,15 @@ class Calculate extends Component<CalculateEditorProps, CalculateEditorState> {
               <CodeMirror
                 className='calculate_content_code'
                 style={{height: '100%'}}
-                ref="editor-code"
-                value='// Write your calculate'
-                onChange={this.changeCode}
+                value={this.state.code}
+                onBeforeChange={this.changeCode}
                 options={codeOptions} />
             </Col>
             <Col span={12}>
               <CodeMirror
                 className='calculate_content_result'
-                ref="editor-result"
-                value={this.formatResult({data:null})}
-                onChange={this.changeResult}
+                value={this.state.result}
+                onBeforeChange={this.changeResult}
                 options={resultOptions} />
             </Col>
           </Row>

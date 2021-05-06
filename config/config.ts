@@ -110,6 +110,12 @@ export default defineConfig({
               icon: 'calculator',
               component: './calculate/editor'
             },
+            {
+              path: '/report',
+              name: 'report',
+              icon: 'file-text',
+              component: './report/editor'
+            },
           ],
         },
       ],

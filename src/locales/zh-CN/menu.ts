@@ -57,5 +57,7 @@ export default {
   'menu.chart': '图库',
   'menu.chart.editor': '图表编辑',
   'menu.calculate': '测算',
-  'menu.calculate.editor': '测算编辑'
+  'menu.calculate.editor': '测算编辑',
+  'menu.report': '报告',
+  'menu.report.editor': '报告编辑'
 };

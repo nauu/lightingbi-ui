@@ -1,6 +1,6 @@
 import {gql} from 'graphql-request';
 
-const getCalculateGql = gql`
+const queryReportInfoGql = gql`
   query {
     findDatasetPage(page:{num:1,size:10,sort:""}){
       num
@@ -15,13 +15,6 @@ const getCalculateGql = gql`
   }
 `;
 
-const executeCalculateGql = gql`
-  query execFormula($code: String!) {
-    formulaCalculate(formula: $code)
-  }
-`;
-
 export {
-  getCalculateGql,
-  executeCalculateGql
+  queryReportInfoGql
 }

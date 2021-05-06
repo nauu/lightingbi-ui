@@ -19,7 +19,7 @@ const Model: ModelType = {
 
   state: {
     code: '',
-    result: ''
+    result: null
   },
 
   effects: {
@@ -32,14 +32,15 @@ const Model: ModelType = {
         }
       })
     },
-    *execCalc(_, { call, put }) {
-      const response = yield call(executeCalculate);
+    *execCalc({ payload }, { call, put }) {
+      const response = yield call(executeCalculate, payload);
       yield put({
         type: 'execSave',
         payload: {
           result: response
         }
-      })
+      });
+      return response;
     }
   },
 

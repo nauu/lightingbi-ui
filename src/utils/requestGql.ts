@@ -13,6 +13,7 @@ const request = async function(endpoint: string, query: string, variables: objec
   } catch (e) {
     console.error(e);
     // TODO 异常处理
+    return e
   }
   return data;
 }

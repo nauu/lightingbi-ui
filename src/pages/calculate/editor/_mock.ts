@@ -9,7 +9,7 @@ export default {
   'POST  /api/calculate/get': ( req, res ) => {
     res.send({data:executeCalculateData});
   },
-  'POST  /api/calculate/exec': ( req, res ) => {
-    res.send({data:executeCalculateData});
-  },
+  // 'POST  /api/calculate/exec': ( req, res ) => {
+  //   res.send({data:executeCalculateData});
+  // },
 }
